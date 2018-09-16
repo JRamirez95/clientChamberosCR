@@ -46,3 +46,8 @@ input::-webkit-input-placeholder {
 .login-button {
     margin-top: 5px;
 }
+
+agm-map {
+    height: 200px;
+  }
+  
