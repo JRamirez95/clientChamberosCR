@@ -1,0 +1,48 @@
+.registrarse {
+    background-image: url('https://images.pexels.com/photos/163999/pexels-photo-163999.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+h1.title {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    display: block;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 10px !important;
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    padding-top: 3px;
+}
+
+.main-login {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.main-center {
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 40px 40px;
+}
+
+.login-button {
+    margin-top: 5px;
+}

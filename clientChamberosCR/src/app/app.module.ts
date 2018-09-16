@@ -8,12 +8,15 @@ import { app_routing }from "./app.routes";
 import { Routes,RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpModule} from "@angular/http";
+import { RegisterComponent } from './component/register/register.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent    
   ],
   imports: [
     BrowserModule,
