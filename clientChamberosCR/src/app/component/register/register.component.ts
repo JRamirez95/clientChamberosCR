@@ -1,23 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from 'google-maps'
+import {UserService} from '../../services/user/user.service';
+import {User} from '../../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
 
   
   @ViewChild('gmap') gmapElement: any;
+  //google maps
   map: google.maps.Map;
-
   isTracking = false;
-
   currentLat: any;
   currentLong: any;
-
   marker: google.maps.Marker;
+
+
+  user = new User();
+
+  constructor (private userServices: UserService, private router:Router){
+
+  }
+
 
   ngOnInit() {
     var mapProp = {
@@ -88,4 +98,30 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+
+  registerUser(event) {
+    event.preventDefault();
+    if (this.validationPassword(this.user) == false) {
+        console.log(this.user);
+        this.userServices.saveUser(this.user)
+            .subscribe(user => {
+                console.log(user);
+                this.user = user;
+                
+                alert("Su registro se realizo exitosamente!");
+                this.router.navigate(['/login'])
+            });
+          } else {
+            alert("registro fallido, intentolo nuevamente");
+        }
+   // return;
+}
+
+ validationPassword = function(user){
+   if (user.password != user.repeatPassword) {
+      alert("Las contrasenas no coinciden");
+         return true;
+                                              }
+          return false;
+                                    }
 }

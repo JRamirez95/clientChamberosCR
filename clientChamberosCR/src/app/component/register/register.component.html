@@ -37,27 +37,51 @@
         <div class="row-fluid main">
             <div class="main-register main-center">
                 <h1 class="text-center title"><strong>Registrarse</strong></h1>
-                <form method="POST" action="log/registrar-usuario.php" class="form-horizontal">
+                <form id="Register" #registerForm="ngForm" name="Register"(submit) = "registerUser($event)" class="form-horizontal">
                     <fieldset>
 
                         <div class="form-group">
-                            <input type="text" name="nombre" tabindex="2" class="form-control" placeholder="Nombre" required value="">
+                            <input type="text" name="nombre" [(ngModel)]="user.name"  tabindex="2" class="form-control" placeholder="Nombre" #name="ngModel"  required>
+                            <div *ngIf ="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                                <div [hidden]="!name.errors.required">
+                                   El nombre es requerido!
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" tabindex="3" class="form-control" placeholder="Email" value="">
+                            <input type="text" name="email" tabindex="3" class="form-control" placeholder="Email" [(ngModel)]="user.email" #email="ngModel" required email/>
+                            <div *ngIf ="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                                <div [hidden]="!email.errors.required">
+                                   El correo electrónico es requerido!
+                                </div>
+                            </div>
+                            <p *ngIf="email.errors?.email" class="alert alert-danger">Correo electrónico inválido</p>   
+                        </div>
+
+                        <!--<div class="form-group">
+                            <input type="text" name="usuario" tabindex="4" class="form-control" placeholder="Nombre de Usuario" [(ngModel)]="user.usuario" #user="ngModel" required >
+                            <div *ngIf ="user.errors && (user.dirty || user.touched)" class="alert alert-danger">
+                                <div [hidden]="!user.errors.required">
+                                   El nombre de usuario es requerido!
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <div class="form-group">
+                            <input type="password" name="contrasena"  [(ngModel)]="user.password" tabindex="5" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" #password="ngModel" required>
+                            
                         </div>
 
                         <div class="form-group">
-                            <input type="text" name="usuario" tabindex="4" class="form-control" placeholder="Nombre de Usuario" required value="">
+                            <input type="password" name="contrasena1" tabindex="5" class="form-control" placeholder="Confirme la contraseña" [(ngModel)]="user.certainPassword" #certainPassword="ngModel" [equalTo]="password">
+                            <div *ngIf ="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
+                                <div [hidden]="!email.errors.required">
+                                   Repetir la contrase es requerida!
+                                </div>
+                            </div>
+                            <p *ngIf="certainPassword.errors?.equalTo " class="alert alert-danger">Las contraseñas no coinciden</p>
                         </div>
 
-                        <div class="form-group">
-                            <input type="password" name="contrasena" tabindex="5" class="form-control" placeholder="Contraseña" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" name="contrasena1" tabindex="5" class="form-control" placeholder="Confirme la contraseña" required>
-                        </div>
 
                         <div>
                             <div class="row">
@@ -76,7 +100,7 @@
                             </div>
                             
                             <div class="text-white">
-                                <span>Latitud: {{currentLat}}</span>
+                                <span >Latitud: {{currentLat}}</span>
                             </div>
                             <div class="text-white">
                                 <span>Longitud: {{currentLong}}</span>
@@ -88,7 +112,7 @@
                         <!-- Submit -->
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" class="btn btn-primary btn-block register-button">Registrarse</button>
+                                <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary btn-block register-button">Registrarse</button>
                             </div>
                         </div>
 
