@@ -9,6 +9,7 @@ import { Routes,RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { RegisterComponent } from './component/register/register.component';
+import { BuscarChamberosComponent } from './component/buscar-chamberos/buscar-chamberos.component';
 
 
 
@@ -16,7 +17,8 @@ import { RegisterComponent } from './component/register/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent    
+    RegisterComponent,
+    BuscarChamberosComponent    
   ],
   imports: [
     BrowserModule,
