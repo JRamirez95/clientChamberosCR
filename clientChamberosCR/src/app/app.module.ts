@@ -12,7 +12,8 @@ import { BuscarChamberosComponent } from './component/buscar-chamberos/buscar-ch
 //validations angular
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
-import { HomeComponent } from './component/home/home.component'
+import { HomeComponent } from './component/home/home.component';
+import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component'
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomeComponent } from './component/home/home.component'
     LoginComponent,
     RegisterComponent,
     BuscarChamberosComponent,
-    HomeComponent    
+    HomeComponent,
+    SearchChamberosComponent    
   ],
   imports: [
     BrowserModule,
