@@ -1,129 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrarse</title>
+<!------ Include the above in your HEAD tag ---------->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link media="all" type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://ubisafe.org/images/transparent-tool-logo-6.png" alt=""/>
+                        <h3>Bienvenido</h3>
+                        <p>Registarse en ChamberosCR</p>
+                        
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="/login" role="tab" aria-controls="home" aria-selected="true">Iniciar Sesion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="/register" role="tab" aria-controls="profile" aria-selected="false">Registrarse</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Registrarse</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Nombre *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Apellidos *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Contraseña *" value="" />
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="hombre">
+                                                    <span> Hombre </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="mujer">
+                                                    <span> Mujer </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="otro">
+                                                    <span> Otro </span> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Teléfono *" value="" />
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  placeholder="Confirmar Contraseña *" value="" />
+                                        </div>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!------ Include the above in your HEAD tag ---------->
-
-</head>
-
-<body class="registrarse">
-
-    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mx-auto" href="Inicio.php" style="color: white;">Cham-<span>-Beros</span></a>
-            <div class="collapse navbar-collapse" id="navbarCollapse1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php" style="color: white;">Volver</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row-fluid main">
-            <div class="main-register main-center">
-                <h1 class="text-center title"><strong>Registrarse</strong></h1>
-                <form id="Register" #registerForm="ngForm" name="Register"(submit) = "registerUser($event)" class="form-horizontal">
-                    <fieldset>
-
-                        <div class="form-group">
-                            <input type="text" name="nombre" [(ngModel)]="user.name"  tabindex="2" class="form-control" placeholder="Nombre" #name="ngModel"  required>
-                            <div *ngIf ="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-                                <div [hidden]="!name.errors.required">
-                                   El nombre es requerido!
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="email" tabindex="3" class="form-control" placeholder="Email" [(ngModel)]="user.email" #email="ngModel" required email/>
-                            <div *ngIf ="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
-                                <div [hidden]="!email.errors.required">
-                                   El correo electrónico es requerido!
-                                </div>
-                            </div>
-                            <p *ngIf="email.errors?.email" class="alert alert-danger">Correo electrónico inválido</p>   
-                        </div>
-
-                        <!--<div class="form-group">
-                            <input type="text" name="usuario" tabindex="4" class="form-control" placeholder="Nombre de Usuario" [(ngModel)]="user.usuario" #user="ngModel" required >
-                            <div *ngIf ="user.errors && (user.dirty || user.touched)" class="alert alert-danger">
-                                <div [hidden]="!user.errors.required">
-                                   El nombre de usuario es requerido!
-                                </div>
-                            </div>
-                        </div>-->
-
-                        <div class="form-group">
-                            <input type="password" name="contrasena"  [(ngModel)]="user.password" tabindex="5" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" #password="ngModel" required>
-                            
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" name="contrasena1" tabindex="5" class="form-control" placeholder="Confirme la contraseña" [(ngModel)]="user.certainPassword" #certainPassword="ngModel" [equalTo]="password">
-                            <div *ngIf ="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
-                                <div [hidden]="!email.errors.required">
-                                   Repetir la contrase es requerida!
-                                </div>
-                            </div>
-                            <p *ngIf="certainPassword.errors?.equalTo " class="alert alert-danger">Las contraseñas no coinciden</p>
-                        </div>
-
-
-                        <div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="text-center">
-                                        <h3>
-                                            <div #gmap style="width:100%; height:300px"></div>
-                                          </h3>
+                                        <input type="submit" class="btnRegister"  value="Registrarse"/>
                                     </div>
                                 </div>
                             </div>
-
-                             <div>
-                                <button [disabled]="isTracking" class="btn btn-primary" (click)="findMe()">Find me</button>
-                                <!--<button class="btn btn-primary" (click)="trackMe()">Track me</button> -->
-                            </div>
-                            
-                            <div class="text-white">
-                                <span >Latitud: {{currentLat}}</span>
-                            </div>
-                            <div class="text-white">
-                                <span>Longitud: {{currentLong}}</span>
-                            </div>
+              
                         </div>
-
-                        <br>
-
-                        <!-- Submit -->
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary btn-block register-button">Registrarse</button>
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </form>
+                    </div>
+                </div>
 
             </div>
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>                               
-</body>
-
-</html>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

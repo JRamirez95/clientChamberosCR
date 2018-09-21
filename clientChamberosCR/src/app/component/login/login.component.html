@@ -6,94 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link media="all" type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!------ Include the above in your HEAD tag ---------->
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
-<body class="login">
+<body>
 
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="https://ubisafe.org/images/transparent-tool-logo-6.png" alt="" />
+                <h3>Bienvenido</h3>
+                <p>Inicio de Sesion en ChamberosCR</p>
 
-    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <span class="navbar-brand mx-auto" href="#" style="color: black;">Configuración de Servicio</span>
-            <div class="collapse navbar-collapse" id="navbarCollapse1">
-                <ul class="navbar-nav ml-auto">
-
+            </div>
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" href="Inicio.php" style="color:black;">Inicio</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="/login" role="tab" aria-controls="home" aria-selected="true">Iniciar Sesion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="/register" role="tab" aria-controls="profile" aria-selected="false">Registrarse</a>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container log">
-
-        <div class="omb_login">
-            <h3 class="omb_authTitle">Iniciar Sesion o
-                <a href="Registrarse.php">Registrarse</a>
-            </h3>
-            <div class="row omb_row-sm-offset-3 omb_socialButtons">
-                <div class="col-xs-4 col-sm-6">
-                    <a id="loginButton" onclick="authUser();" class="btn btn-lg btn-block omb_btn-facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        <span class="hidden-xs"> Facebook</span>
-                    </a>                         
-                </div>
-
-            </div>
-
-            <div class="row omb_row-sm-offset-3 omb_loginOr">
-                <div class="col-xs-12 col-sm-6">
-                    <hr class="omb_hrOr">
-                    <span class="omb_spanOr">or</span>
-                </div>
-            </div>
-
-            <div class="row omb_row-sm-offset-3">
-                <div class="col-xs-12 col-sm-6">
-                    <form class="omb_loginForm" action="log/checklogin.php" autocomplete="off" method="POST">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control" name="usuario" required placeholder="Nombre de Usuario">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Iniciar Sesion</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email *" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña *" value="" />
+                                </div>
+                                <input type="submit" class="btnRegister" value="Entrar" />
+                            </div>
                         </div>
-                        <span class="help-block"></span>
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" name="contrasena" required placeholder="Contraseña">
-                        </div>
-                        <br>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row omb_row-sm-offset-3">
-                <div class="col-xs-12 col-sm-6">
-                    <p class="omb_forgotPwd">
-                        <a href="#">Recordar contraseña?</a>
-                    </p>
+                    </div>
+
                 </div>
             </div>
         </div>
 
     </div>
-    
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>
