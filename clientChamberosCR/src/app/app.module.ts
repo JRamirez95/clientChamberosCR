@@ -13,7 +13,8 @@ import { BuscarChamberosComponent } from './component/buscar-chamberos/buscar-ch
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { HomeComponent } from './component/home/home.component';
-import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component'
+import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SearchChamberosComponent } from './component/search-chamberos/search-ch
     RegisterComponent,
     BuscarChamberosComponent,
     HomeComponent,
-    SearchChamberosComponent    
+    SearchChamberosComponent,
+    DashboardComponent    
   ],
   imports: [
     BrowserModule,
