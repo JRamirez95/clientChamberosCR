@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { HomeComponent } from './component/home/home.component';
 import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component'
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { TrimValueAccessorModule } from 'ng-trim-value-accessor';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { DashboardComponent } from './component/dashboard/dashboard.component'
     CustomFormsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    TrimValueAccessorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

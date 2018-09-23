@@ -12,10 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
- // domain: string = 'http://localhost:3977';
- domain: string = '';
+  //domain: string = 'http://localhost:3001';
+ domain: string = 'https://chamberos-api.herokuapp.com';
   saveUser(newUser: User) {
-    return this.http.post<User>(`${this.domain}/api/register`, newUser)
+    return this.http.post<User>(`${this.domain}/api/users`, newUser)
       .map(res => res);
   }
 
