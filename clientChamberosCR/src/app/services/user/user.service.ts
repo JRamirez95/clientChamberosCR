@@ -19,26 +19,18 @@ export class UserService {
       .map(res => res);
   }
 
-  /*LoginToken(newUser: SingIn) {
-    return this.http.post<UserToken>(`${this.domain}/api/login`, newUser)
-      .map(user => user);
-  }
+  /*getUsers(token: string) {
+    return this.http.get<User[]>(`${this.domain}/api/users` ,{headers: { Authorization: token}})
+      .map(res => res);
+  }*/
 
-  SignInUser(newUser: SingIn) {
-    return this.http.post<User>(`${this.domain}/api/login`, newUser)
-      .map(user => user);
-  }
-
-  userAuthentification(email,password) {
-    var data = "email="+email+"&password="+password;
-    console.log(data);
-    return this.http.post(`${this.domain}/api/login`, data)
+  editUser(userEdit: User,id:string, token: string) {
+    return this.http.put<User>(`${this.domain}/api/users/`+id, userEdit,{headers: { Authorization: token}})
       .map(res => res);
   }
 
-  getUserClaims(){
-    return this.http.get(this.domain+'/api/login');
+  deleteUser(id:string, token: string) {
+    return this.http.delete<User>(`${this.domain}/api/users/`+id,{headers: { Authorization: token}})
+      .map(res => res);
   }
-
-}*/
 }
