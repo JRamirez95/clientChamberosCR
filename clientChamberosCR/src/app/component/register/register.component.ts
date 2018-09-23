@@ -106,6 +106,7 @@ export class RegisterComponent implements OnInit {
         this.user.latitud = "10.185158";
         this.user.longitud = "-84.390989";
         this.user.approvalstatus = "true";
+        this.user.professionId = "";
 
         console.log(this.user);
         this.userServices.saveUser(this.user)
