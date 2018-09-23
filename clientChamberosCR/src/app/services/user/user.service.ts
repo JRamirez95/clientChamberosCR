@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 
 
 import {User} from '../../models/User';
+import { Login } from '../../models/login';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,10 @@ export class UserService {
   deleteUser(id:string, token: string) {
     return this.http.delete<User>(`${this.domain}/api/users/`+id,{headers: { Authorization: token}})
       .map(res => res);
+  }
+
+  Login(newUser: Login) {
+   
+    return this.http.post<User>(`${this.domain}/api/users`, newUser) .map(user => user);
   }
 }
