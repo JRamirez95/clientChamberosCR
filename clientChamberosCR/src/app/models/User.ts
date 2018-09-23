@@ -2,9 +2,9 @@ export class User{
     _id?: string;
     name: string;
     surnames: string;
-    age: string;
     gender:string;
     email: string;
+    phone:string;
     birthdate: Date;
     password: string;
     latitud: string;
