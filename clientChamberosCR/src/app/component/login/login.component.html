@@ -28,12 +28,12 @@
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email *" value="" />
+                                    <input type="email" [(ngModel)] = "login.email" class="form-control" placeholder="Email *"  />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Contraseña *" value="" />
+                                    <input type="password"  [(ngModel)]="login.password"  class="form-control" placeholder="Contraseña *"  />
                                 </div>
                                 <!--<input type="submit" class="btnRegister" value="Entrar" />-->
                                 <a type="submit" class="btnRegister" href="/dashboard">Entrar</a>
