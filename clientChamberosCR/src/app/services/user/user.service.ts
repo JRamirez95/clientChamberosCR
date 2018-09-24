@@ -57,14 +57,16 @@ export class UserService {
   }
   // login routes
   LoginToken(newUser: Login) {
+    const url = `${this.domain}/api/login/`;
     return this.http
-      .post<UserToken>(`http://localhost:3000/api/login`, newUser)
+      .post<UserToken>(url, newUser)
       .map(user => user);
   }
 
   LoginUser(newUser: Login) {
+    const url = `${this.domain}/api/login/`;
     return this.http
-      .post<User>(`http://localhost:3000/api/login`, newUser)
+      .post<User>( url , newUser)
       .map(user => user);
   }
 }
