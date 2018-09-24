@@ -16,7 +16,7 @@ const app_routes: Routes = [
   {path:'search', component: SearchChamberosComponent},
   {path:'dashboard', component: DashboardComponent},
 
-  {path:'search/:location/:km', component: SearchChamberosComponent}
+  {path:'search/:location/:km', component: SearchChamberosComponent},
 
   {path:'updateUser', component: UpdateUserComponent}
 
