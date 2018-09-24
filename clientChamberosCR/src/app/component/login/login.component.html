@@ -36,7 +36,8 @@
                                     <input type="password"  [(ngModel)]="login.password"  class="form-control" placeholder="Contraseña *"  />
                                 </div>
                                 <!--<input type="submit" class="btnRegister" value="Entrar" />-->
-                                <a type="submit" class="btnRegister" href="/dashboard">Entrar</a>
+                                <button class="btnRegister" type="submit" (click)= 'log();'>Login</button>
+                                
                             </div>
                         </div>
                     </div>
