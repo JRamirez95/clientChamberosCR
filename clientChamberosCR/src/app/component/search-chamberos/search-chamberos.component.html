@@ -1,83 +1,98 @@
-
-    <body class="serv">
-      
-
-        <section id="plans">
-            <div class="container">
-                <div class="filtros">
-                    <h4 style="width:100%; text-align:center;"><strong>Seleccione los filtros para buscar</strong></h4>                    
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-4">
-                                <small>Provincias</small>
-                                    <select class="form-control"  name="id_provincia" id="provinciaCombo">
-                                       
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                <small>Cantones</small>
-                                    <select class="form-control"  name="id_canton" id="cantonCombo"></select>
-                                </div>
-                                <div class="col-md-4">
-                                <small>Distritos</small>
-                                    <select class="form-control"  name="id_distrito" id="distritoCombo"></select>
-                                </div>
-                                
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
-                <br>
-                <div class="container mt-40">
-                    <!--<h3 class="text-center">Hover Effect Style : Demo - 6</h3>-->
-                    <div class="row mt-30">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="box6">
-                                <img src="http://bestjquery.com/tutorial/hover-effect/demo161/images/img-1.jpg" alt="">
-                                <div class="box-content">
-                                    <h3 class="title">Williamson</h3>
-                                    <span class="post">Web Developer</span>
-                                    <ul class="icon">
-                                        <li><a href="#" class="fa fa-search"></a></li>
-                                        <li><a href="#" class="fa fa-link"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="box6">
-                                <img src="http://bestjquery.com/tutorial/hover-effect/demo161/images/img-2.jpg" alt="">
-                                <div class="box-content">
-                                    <h3 class="title">Kristiana</h3>
-                                    <span class="post">Web Designer</span>
-                                    <ul class="icon">
-                                        <li><a href="#" class="fa fa-search"></a></li>
-                                        <li><a href="#" class="fa fa-link"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="box6">
-                                <img src="http://bestjquery.com/tutorial/hover-effect/demo161/images/img-3.jpg" alt="">
-                                <div class="box-content">
-                                    <h3 class="title">Kristiana</h3>
-                                    <span class="post">Web Designer</span>
-                                    <ul class="icon">
-                                        <li><a href="#" class="fa fa-search"></a></li>
-                                        <li><a href="#" class="fa fa-link"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div id="main-container" class="container-fluid w-100 p-3">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="entry-header">
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar.....">
+                <span class="input-group-btn">
+                  <select class="btn btn-secondary">
+                    <option>Inches</option>
+                    <option>Feet</option>
+                    <option>mm</option>
+                  </select>
+                </span>
+                <span class="input-group-btn">
+                  <select class="btn btn-secondary">
+                    <option>Inches</option>
+                    <option>Feet</option>
+                    <option>mm</option>
+                  </select>
+                </span>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary">Buscar</button>
+                  </span>
+              </div>
             </div>
-        </section>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    
-    </body>
+          </div>
+        </div>
+        <div class="entry-footer">
+          <div *ngIf="lat && lng">
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                  <h3><strong>Usuario</strong></h3>
+                  <p>Esoy aquiii!</p>
+                </agm-info-window>
+              </agm-marker>
+              <agm-marker *ngFor="let user of users; let i = index" [latitude]="user.user.latitud" [longitude]="user.user.longitud"
+                #idid [iconUrl]="'../../../assets/imhere.png'" id="marker1">
+                <agm-info-window>
+                  <h3><strong>{{user.user.name}} {{user.user.surnames}}</strong></h3>
+                  <p>Hey puedes contactarme, estoy a tan solo {{user.km}} km, de donde tu estas</p>
+                  <button class="btn btn-primary" (click)="getUserById(user.user._id)">Ver perfi</button>
+                </agm-info-window>
+              </agm-marker>
+              <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius" [fillColor]="'#aeefee'" [circleDraggable]="false"
+                [editable]="false">
+              </agm-circle>
+            </agm-map>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" id="profile-container">
+        <div class="container-fluid">
+          <div class="col-md-12 entry-header">
+            <h1>Detalles Perfil</h1>
+          </div>
+          <div class="col-md-12 entry-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h2 id="fullname">Name</h2>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h3 id="email">Email</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h3 id="phone">Teléfono</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h3 id="gender">Genero</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h3 id="birthdate">Fecha Nacimiento</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <h3 id="profession">Profesión</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

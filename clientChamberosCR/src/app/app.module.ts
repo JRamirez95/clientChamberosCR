@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { RegisterComponent } from './component/register/register.component';
 import { BuscarChamberosComponent } from './component/buscar-chamberos/buscar-chamberos.component';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../environments/environment';
+
 //validations angular
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
@@ -44,7 +47,11 @@ import { TrimValueAccessorModule } from 'ng-trim-value-accessor';
     RouterModule,
     ReactiveFormsModule,
     HttpModule,
-    TrimValueAccessorModule
+    TrimValueAccessorModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsKey,
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
