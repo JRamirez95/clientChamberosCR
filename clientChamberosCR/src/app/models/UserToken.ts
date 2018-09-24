@@ -1,4 +1,3 @@
-export class  UserToken{
+export class  UserToken {
     token: string;
-
 }

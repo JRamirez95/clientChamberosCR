@@ -13,7 +13,8 @@ const app_routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'home', component: HomeComponent},
   {path:'search', component: SearchChamberosComponent},
-  {path:'dashboard', component: DashboardComponent}
+  {path:'dashboard', component: DashboardComponent},
+  {path:'search/:location/:km', component: SearchChamberosComponent}
     
 ];
   
