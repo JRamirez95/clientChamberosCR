@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { UserToken } from '../../models/UserToken';
 
 
 import {User} from '../../models/User';
@@ -36,8 +37,13 @@ export class UserService {
       .map(res => res);
   }
 
-  Login(newUser: Login) {
-   
-    return this.http.post<User>(`${this.domain}/api/users`, newUser) .map(user => user);
+  LoginToken(newUser: Login) {
+    return this.http.post<UserToken>(`http://localhost:3000/api/login`, newUser)
+      .map(user => user);
+  }
+
+  LoginUser(newUser: Login) {
+    return this.http.post<User>(`http://localhost:3000/api/login`, newUser)
+      .map(user => user);
   }
 }
