@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  editProfile(event) {
+  editUser(event) {
     event.preventDefault();
         var id = this.user._id;
         var userToken = localStorage.getItem("userToken");
