@@ -15,8 +15,12 @@ import { CustomFormsModule } from 'ng2-validation';
 import { HomeComponent } from './component/home/home.component';
 import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { ChangePassComponent } from './component/change-pass/change-pass.component'
+
+import { TrimValueAccessorModule } from 'ng-trim-value-accessor';
+
 
 
 @NgModule({
@@ -39,7 +43,8 @@ import { ChangePassComponent } from './component/change-pass/change-pass.compone
     CustomFormsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    TrimValueAccessorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

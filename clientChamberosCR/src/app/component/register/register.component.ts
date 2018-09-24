@@ -30,13 +30,12 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
-   
-    //var mapProp = {
-      //center: new google.maps.LatLng(18.5793, 73.8143),
-      //zoom: 15,
-      //mapTypeId: google.maps.MapTypeId.ROADMAP
-    //};
-    //this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    var mapProp = {
+      center: new google.maps.LatLng(18.5793, 73.8143),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
   findMe() {
@@ -102,7 +101,13 @@ export class RegisterComponent implements OnInit {
 
   registerUser(event) {
     event.preventDefault();
-    if (this.validationPassword(this.user) == false) {
+   // if (this.validationPassword(this.user) == false) {
+
+        this.user.latitud = "10.185158";
+        this.user.longitud = "-84.390989";
+        this.user.approvalstatus = "true";
+        this.user.professionId = "";
+
         console.log(this.user);
         this.userServices.saveUser(this.user)
             .subscribe(user => {
@@ -112,17 +117,17 @@ export class RegisterComponent implements OnInit {
                 alert("Su registro se realizo exitosamente!");
                 this.router.navigate(['/login'])
             });
-          } else {
-            alert("registro fallido, intentolo nuevamente");
-        }
+          }// else {
+           // alert("registro fallido, intentolo nuevamente");
+         // }
    // return;
 }
 
- validationPassword = function(user){
+/* validationPassword = function(user){
    if (user.password != user.repeatPassword) {
       alert("Las contrasenas no coinciden");
          return true;
                                               }
           return false;
                                     }
-}
+}*/

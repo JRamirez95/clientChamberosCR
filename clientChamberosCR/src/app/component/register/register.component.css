@@ -1,6 +1,6 @@
 .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 6%;
+    margin-top: 1%;
     padding: 3%;
 }
 .register-left{
@@ -93,3 +93,38 @@
     margin-bottom: -15%;
     color: #495057;
 }
+
+#wrapper {
+    width: 30%;
+    margin: 50px auto;
+    padding: 50px;
+    background: #D7FBFF;
+  }
+  form {
+    margin: 30px auto;
+  }
+  .textInput {
+    border: none;
+    height: 28px;
+    margin: 2px;
+    border: 1px solid #6B7363;
+    font-size: 1.2em;
+    padding: 5px;
+    width: 95%;
+  }
+  .textInput:focus {
+    outline: none;
+  }
+  .btn {
+    width: 98.6%;
+    border: none;
+    margin-top: 5px;
+    color: white;
+    background-color: #3b5998;
+    border-radius: 5px;
+    padding: 12px;
+  }
+
+  
+
+  
