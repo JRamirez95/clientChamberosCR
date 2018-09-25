@@ -10,8 +10,8 @@ import { Login } from '../../models/login';
 })
 
 export class UserService {
-  //domain: string = 'http://localhost:3001';
-  private domain = 'https://chamberos-api.herokuapp.com';
+  domain: string = 'http://localhost:3001';
+  //private domain = 'https://chamberos-api.herokuapp.com';
   
   constructor(private http: HttpClient) {}
 
@@ -49,6 +49,7 @@ export class UserService {
       .map(res => res);
   }
   getUserById(id: string, token: string) {
+    console.log(id);
     const url = `${this.domain}/api/users/${id}`;
     return this.http
       .get<User>(url, {
@@ -58,10 +59,12 @@ export class UserService {
   }
   // login routes
   LoginToken(newUser: Login) {
+    console.log("hola");
     const url = `${this.domain}/api/login/`;
     return this.http
       .post<UserToken>(url, newUser)
       .map(user => user);
+      
   }
 
   LoginUser(newUser: Login) {
