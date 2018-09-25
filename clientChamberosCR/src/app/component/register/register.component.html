@@ -51,32 +51,16 @@
                                                     </div>
                                                 </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Contraseña *"   [(ngModel)]="user.password" name="password" required minlength="8" #password="ngModel"/>
-                                            <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
-                                                    <div [hidden]="!password.errors.required">
-                                                       La contraseña es requerida!
-                                                    </div>
-                                                    <div [hidden]="!password.errors.minlength">
-                                                        La contraseña requiere 8 digitos como minimo!
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Contraseña de verificacion *"   [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password"/>
-                                                <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
-                                                        <div [hidden]="!certainPassword.errors.required">
-                                                           La contraseña de verificacion es requerida!
-                                                        </div>
-                                                        <div [hidden]="!certainPassword.errors.minlength">
-                                                            La contraseña de verificacion requiere 8 digitos como minimo!
-                                                        </div>
-                                                        
-                                                        <div [hidden]="!certainPassword.errors?.equalTo ">
-                                                                La contraseñas no coinciden!
-                                                            </div>
-                                                    </div>
+                                                <label>Profesión</label>
+                                                <br>
+                                            <select [(ngModel)]="user.professionId" [ngModelOptions]="{standalone: true}">
+                                              <option *ngFor="let profession of professions" [value]="profession._id">
+                                                {{profession.description}}</option>
+                                            </select>
                                             </div>
+                                        
                                        
                                         <div class="form-group">
                                             <div class="maxl">
@@ -91,6 +75,15 @@
                                                 </label>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                                <label>Fecha de nacimiento</label>
+                                                <input class="form-control" required id="birthdate" name= "birthdate" [(ngModel)]="user.birthdate" type="date" #fecha="ngModel">
+                                                <div *ngIf ="fecha.errors && (fecha.dirty || fecha.touched)" class="alert alert-danger">
+                                                   <div [hidden]="!fecha.errors.required">
+                                                        La fecha de nacimiento es requrida!
+                                                   </div>
+                                                </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -104,15 +97,7 @@
                                                     </div>
                                                 </div>
                                         </div>
-                                        <div class="form-group">
-                                                <label>Fecha de nacimiento</label>
-                                                <input class="form-control" required id="birthdate" name= "birthdate" [(ngModel)]="user.birthdate" type="date" #fecha="ngModel">
-                                                <div *ngIf ="fecha.errors && (fecha.dirty || fecha.touched)" class="alert alert-danger">
-                                                   <div [hidden]="!fecha.errors.required">
-                                                        La fecha de nacimiento es requrida!
-                                                   </div>
-                                                </div>
-                                        </div>
+                                        
                                         <!--falta validar su longitud de digitos numericos-->
                                         <div class="form-group">
                                                 <input type="number" class="form-control" placeholder="Telefono/Celular *"   [(ngModel)]="user.phone" name="phone" #phone="ngModel"  required minlength="8" required/>
@@ -126,12 +111,35 @@
                                                     </div>
                                             </div>
                                       
-                                        <div class="form-group">
-                                            <!--<input type="password" class="form-control"  placeholder="Confirmar Contraseña *" name="repeatPassword" [(ngModel)]="user.repeatPassword" />-->
-                                        </div>
+                                            <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Contraseña *"   [(ngModel)]="user.password" name="password" required minlength="8" #password="ngModel"/>
+                                                    <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+                                                            <div [hidden]="!password.errors.required">
+                                                               La contraseña es requerida!
+                                                            </div>
+                                                            <div [hidden]="!password.errors.minlength">
+                                                                La contraseña requiere 8 digitos como minimo!
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <input type="password" class="form-control" placeholder="Contraseña de verificacion *"   [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password"/>
+                                                        <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
+                                                                <div [hidden]="!certainPassword.errors.required">
+                                                                   La contraseña de verificacion es requerida!
+                                                                </div>
+                                                                <div [hidden]="!certainPassword.errors.minlength">
+                                                                    La contraseña de verificacion requiere 8 digitos como minimo!
+                                                                </div>
+                                                                
+                                                                <div [hidden]="!certainPassword.errors?.equalTo ">
+                                                                        La contraseñas no coinciden!
+                                                                    </div>
+                                                            </div>
+                                                    </div>
 
-                                        <input type="submit" class="btnRegister"  value="Registrarse"  />
-                                        <!--<button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Login</button>-->
+                                        <!--<input type="submit" class="btnRegister"  value="Registrarse"  />-->
+                                        <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Formalizar Registro</button>
                                     </div>
                                 
                                 </div>

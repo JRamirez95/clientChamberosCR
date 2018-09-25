@@ -10,8 +10,9 @@ import { Login } from '../../models/login';
 })
 
 export class UserService {
-  //  domain: string = 'http://localhost:3001';
+  //domain: string = 'http://localhost:3001';
   private domain = 'https://chamberos-api.herokuapp.com';
+  
   constructor(private http: HttpClient) {}
 
   saveUser(newUser: User) {
