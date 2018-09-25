@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../../models/login';
+import{HttpErrorResponse} from '@angular/common/http';
 import {UserService} from '../../services/user/user.service';
 import {User}from '../../models/User';
 
@@ -11,10 +12,12 @@ import {User}from '../../models/User';
 export class LoginComponent implements OnInit {
   login:Login;
   token: string;
+  isLoginError : boolean = false;
   user  = new User();
   constructor(private userService: UserService) { 
    this.login = new Login();
    this.token = "";
+ 
 
   }
 
@@ -39,6 +42,10 @@ export class LoginComponent implements OnInit {
      sessionStorage.setItem('user', JSON.stringify(this.user));
     
      window.location.href= "../home";
-    });;
+    },
+    (err : HttpErrorResponse)=>{
+      this.isLoginError = true;
+      alert("User or password Invalid")
+    });
   }
   }

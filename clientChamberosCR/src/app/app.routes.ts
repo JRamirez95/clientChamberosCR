@@ -5,6 +5,7 @@ import { BuscarChamberosComponent } from './component/buscar-chamberos/buscar-ch
 import { HomeComponent } from './component/home/home.component';
 import { SearchChamberosComponent } from './component/search-chamberos/search-chamberos.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
 
 const app_routes: Routes = [
   {path:'login', component: LoginComponent},
@@ -14,7 +15,11 @@ const app_routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'search', component: SearchChamberosComponent},
   {path:'dashboard', component: DashboardComponent},
-  {path:'search/:location/:km', component: SearchChamberosComponent}
+
+  {path:'search/:location/:km', component: SearchChamberosComponent},
+
+  {path:'updateUser', component: UpdateUserComponent}
+
     
 ];
   

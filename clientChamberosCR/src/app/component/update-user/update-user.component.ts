@@ -4,18 +4,28 @@ import {User} from '../../models/User';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.css'],
   providers: [UserService]
 })
-export class DashboardComponent implements OnInit {
-  user = new User();
+export class UpdateUserComponent implements OnInit {
 
   constructor(private userServices: UserService, private router:Router) { }
+  user = new User();
 
   ngOnInit() {
   }
+
+  /*getUser(){
+      
+    var userToken = localStorage.getItem("userToken");
+        this.userServices.(userToken)
+        .subscribe(user => {
+        console.log(user);
+        this.user = user;
+        });
+      }*/
 
   editUser(event) {
     event.preventDefault();
@@ -43,4 +53,5 @@ deleteUser(event) {
                 alert("Delete exitoso");
             });
 }
+
 }
