@@ -97,7 +97,8 @@
                                                 <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="input-group">   
-                                                          <input type='text' disabled='' placeholder='Jonathan Ramirez' class='form-control'>                                                       
+                                                          <input type='text' disabled='' value={{usu.name}} class='form-control'>    
+                                                                                                          
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,17 +108,19 @@
                                                 <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="input-group">   
-                                                          <input type='email' disabled='' placeholder='jona@gmail.com' class='form-control'>
+                                                          <input type='email' disabled='' placeholder='{{usu.email}}' class='form-control'>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            
                                             <div class="form-group row">
                                                 <label class="col-sm-3 form-control-label">Teléfono :</label>
                                                 <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="input-group">   
-                                                          <input type='tel' disabled='' placeholder='1234' class='form-control'>
+                                                          <input type='tel' disabled='' placeholder='{{usu.phone}}' class='form-control'>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,7 +130,7 @@
                                                 <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="input-group">   
-                                                          <textarea disabled='' class='form-control'></textarea>                                                       
+                                                          <textarea disabled='' class='form-control'>latitud:{{usu.latitud}}   , longitud:{{usu.longitud}}</textarea>                                                       
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +140,7 @@
                                                 <div class="col-sm-8">
                                                     <div class="form-group">
                                                         <div class="input-group">   
-                                                          <input type='text' disabled='' placeholder='' class='form-control'>                                                      
+                                                          <input type='text' disabled='' placeholder='{{usu.gender}}' class='form-control'>                                                      
                                                         </div>
                                                     </div>
                                                 </div>

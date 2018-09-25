@@ -11,36 +11,27 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   user = new User();
+  usu = new User();
 
-  constructor(private userServices: UserService, private router:Router) { }
+
+  constructor(private userServices: UserService, private router:Router) {
+    this.getUser();
+    
+   }
 
   ngOnInit() {
   }
 
-  editUser(event) {
-    event.preventDefault();
-        var id = this.user._id;
-        var userToken = localStorage.getItem("userToken");
-        this.userServices.editUser(this.user,id, userToken)
-            .subscribe(user => {
-                user =  user;
-                alert("Edit exitoso");
-            });
-}
 
-deleteUser(event) {
-    event.preventDefault();
-    
-    
-        var userToken = localStorage.getItem("userToken");
-        var id = this.user._id;
-
-        
-        this.userServices.deleteUser(id, userToken)
-            .subscribe(user => {
-                console.log(this.user);
-                user =  user;
-                alert("Delete exitoso");
-            });
-}
+  getUser(){
+    var userToken = localStorage.getItem("token");
+    var u = JSON.parse(sessionStorage.getItem("user"));
+    this.userServices.getUserById(u.user._id ,userToken)
+    .subscribe(user => {
+        user =  user;
+        this.usu = user;
+       
+    });
+  }
+  
 }
