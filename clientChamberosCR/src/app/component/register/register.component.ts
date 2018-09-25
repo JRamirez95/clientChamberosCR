@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   lat: number;
   lng: number;
 
+
   constructor (private userServices: UserService, private router:Router){
     this.getLocation();
   }
@@ -38,14 +39,14 @@ export class RegisterComponent implements OnInit {
   
   registerUser(event) {
     event.preventDefault();
-   // if (this.validationPassword(this.user) == false) {
-
         this.user.latitud = String(this.lat);
         this.user.longitud = String(this.lng);
         this.user.approvalstatus = "true";
         this.user.professionId = "";
-
-        console.log(this.user);
+  
+        
+        if(this.validationGPS(this.user,) == false){
+        
         this.userServices.saveUser(this.user)
             .subscribe(user => {
                 console.log(user);
@@ -54,17 +55,23 @@ export class RegisterComponent implements OnInit {
                 alert("Su registro se realizo exitosamente!");
                 this.router.navigate(['/login'])
             });
-          }// else {
-           // alert("registro fallido, intentolo nuevamente");
-         // }
-   // return;
-}
+            
+          }
+          } 
 
-/* validationPassword = function(user){
-   if (user.password != user.repeatPassword) {
-      alert("Las contrasenas no coinciden");
-         return true;
-                                              }
-          return false;
-                                    }
-}*/
+          validationGPS = function(user, ){
+           
+              console.log(user.latitud,user.longitud)
+           if (!user.latitud || !user.longitud) {
+              alert("Estimado usuario queremos advertirle que no tiene la ubicación activada de su dispositivo o computadora. Por favor activar gps para que su ubicación como chambero la pueden ver los usuarios que requieren de sus servicios. !");
+                 return true;
+                                                      }
+                  return false;
+                }
+ }
+ 
+   
+
+
+
+
