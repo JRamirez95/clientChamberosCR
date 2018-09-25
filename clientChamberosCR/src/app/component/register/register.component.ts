@@ -2,26 +2,30 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from 'google-maps'
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../models/User';
+import {Profession} from "../../models/Profession";
 import { Router } from '@angular/router';
+import {ProfessionService} from '../../services/profession/profession.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [UserService]
+  providers: [UserService,ProfessionService ]
 })
 export class RegisterComponent implements OnInit {
 
   
 
-
+  professions: Profession[];
   user = new User();
+  profession = new Profession();
   lat: number;
   lng: number;
 
 
-  constructor (private userServices: UserService, private router:Router){
+  constructor (private userServices: UserService,private porfessionServices: ProfessionService, private router:Router){
     this.getLocation();
+    this.getProfessions();
   }
 
 
@@ -36,15 +40,22 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+
+  getProfessions(){
+    //var ut = localStorage.getItem("userToken");
+        this.porfessionServices.getProfessions()
+        .subscribe(professions => {
+        this.professions = professions;
+        });
+      }
   
   registerUser(event) {
     event.preventDefault();
         this.user.latitud = String(this.lat);
         this.user.longitud = String(this.lng);
         this.user.approvalstatus = "true";
-        this.user.professionId = "";
-  
-        
+
+        console.log(this.user);
         if(this.validationGPS(this.user,) == false){
         
         this.userServices.saveUser(this.user)
