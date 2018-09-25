@@ -9,10 +9,11 @@
 
         <ul class="navbar-nav ml-md-auto d-md-flex">
             <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Iniciar Sesion</a>
+                <a id ="iniciarSesion" class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Iniciar Sesion</a>
+                <a id ="cerrarSesion" class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Cerrar Sesion</a>
             </li>
             <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Registrarse</a>
+                <a id ="registrarse"class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Registrarse</a>
             </li>
         </ul>
     </div>
@@ -26,6 +27,23 @@
             });
         });
     })(jQuery);
-</script>
 
+ window.onload=function()
+    {
+        alert("token");
+    if(localStorage.getItem('token')==="")
+    {
+    document.getElementById('iniciarSesion').style.display ='';
+    document.getElementById('registrar').style.display = '';
+    document.getElementById('cerrarSesion').style.display= 'none';
+    
+    }else{
+        document.getElementById('iniciarSesion').style.display ='none';
+    document.getElementById('registrar').style.display = 'none';
+    document.getElementById('cerrarSesion').style.display = '';
+    }
+    }
+    
+
+</script>
 <router-outlet></router-outlet>
