@@ -37,7 +37,7 @@
                 </agm-info-window>
               </agm-marker>
               <agm-marker *ngFor="let user of users; let i = index" [latitude]="user.user.latitud" [longitude]="user.user.longitud"
-                #idid [iconUrl]="'../../../assets/imhere.png'" id="marker1">
+                #idid [iconUrl]="'http://astonfinechem.net/content/themes/orange/img/map-pin.png'" id="marker1">
                 <agm-info-window>
                   <h3><strong>{{user.user.name}} {{user.user.surnames}}</strong></h3>
                   <p>Hey puedes contactarme, estoy a tan solo {{user.km}} km, de donde tu estas</p>
