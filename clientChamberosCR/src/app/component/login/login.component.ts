@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit {
      localStorage.setItem('token', ''+res.token);
      this.loginUser(this.login);
       this.ngOnInit();
-    });;
+    },
+    (err : HttpErrorResponse)=>{
+      this.isLoginError = true;
+      alert("User or password Invalid")
+    });
   }
 
   loginUser(log:Login){
