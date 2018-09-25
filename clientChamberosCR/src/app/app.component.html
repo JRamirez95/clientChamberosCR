@@ -8,17 +8,35 @@
     <div class="collapse navbar-collapse" id="navbarText">
 
         <ul class="navbar-nav ml-md-auto d-md-flex">
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a id ="iniciarSesion" class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Iniciar Sesion</a>
-                <a id ="cerrarSesion" class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Cerrar Sesion</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a id ="registrarse"class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Registrarse</a>
-            </li>
+
+                <div *ngIf="online ;else loggedOut">
+                        
+                        
+                                <li class="nav-item" [routerLinkActive]="['active']">
+                                        <a id ="iniciarSesion" class="nav-link" [routerLink]="['/login']"><i class="fas fa-key"></i> Iniciar Sesion</a>
+                                        <a id ="registrarse"class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Registrarse</a>
+                                    </li>
+                     
+                </div>    
+          
+           
+      <ng-template #loggedOut>
+            <div>
+                    <li class="nav-item" [routerLinkActive]="['active']">
+               
+                            <a id ="cerrarSesion" class="nav-link" (click)='logout();'><i class="fas fa-key"></i> Cerrar Sesion</a>
+                        </li>
+            </div>
+          </ng-template>
+             
+          
         </ul>
     </div>
 </nav>
 
+      
+      
+      
 <script>
     (function($) {
         $(window).on("load", function() {
