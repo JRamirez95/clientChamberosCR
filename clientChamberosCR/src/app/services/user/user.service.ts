@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { UserToken } from '../../models/UserToken';
-import {User} from '../../models/User';
-import { Login } from '../../models/login';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import "rxjs/add/operator/map";
+import { UserToken } from "../../models/UserToken";
+import { User } from "../../models/User";
+import { Login } from "../../models/login";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
 export class UserService {
   //domain: string = 'http://localhost:3001';
-  private domain = 'https://chamberos-api.herokuapp.com';
-  
+  private domain = "https://chamberos-api.herokuapp.com";
+
   constructor(private http: HttpClient) {}
 
   saveUser(newUser: User) {
@@ -27,8 +26,6 @@ export class UserService {
   }*/
 
   editUser(userEdit: User, id: string, token: string) {
-    console.log("dime");
-    console.log(userEdit,id,token);
     return this.http
       .put<User>(`${this.domain}/api/users/${id}`, userEdit, {
         headers: { Authorization: token }
@@ -51,7 +48,6 @@ export class UserService {
       .map(res => res);
   }
   getUserById(id: string, token: string) {
-    console.log(id);
     const url = `${this.domain}/api/users/${id}`;
     return this.http
       .get<User>(url, {
@@ -61,18 +57,31 @@ export class UserService {
   }
   // login routes
   LoginToken(newUser: Login) {
-    console.log("hola");
     const url = `${this.domain}/api/login/`;
-    return this.http
-      .post<UserToken>(url, newUser)
-      .map(user => user);
-      
+    return this.http.post<UserToken>(url, newUser).map(user => user);
   }
 
   LoginUser(newUser: Login) {
     const url = `${this.domain}/api/login/`;
+    return this.http.post<User>(url, newUser).map(user => user);
+  }
+  getUserByProfessionSearcht(
+    profession: string,
+    latitud: number,
+    longitud: number,
+    radius: string
+  ) {
     return this.http
-      .post<User>( url , newUser)
-      .map(user => user);
+      .get<User[]>(
+        `${
+          this.domain
+        }/api/users/professions/${profession}/${latitud}/${longitud}/${radius}`
+      )
+      .map(res => res);
+  }
+
+  getUserByIdSearch(id: string) {
+    const url = `${this.domain}/api/users/search/${id}`;
+    return this.http.get<User>(url).map(res => res);
   }
 }

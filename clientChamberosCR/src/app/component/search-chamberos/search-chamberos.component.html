@@ -5,23 +5,28 @@
           <div class="col-md-12">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Buscar.....">
                 <span class="input-group-btn">
-                  <select class="btn btn-secondary">
-                    <option>Inches</option>
-                    <option>Feet</option>
-                    <option>mm</option>
+                  <select id="sltProfession" class="btn btn-secondary">
+                    <option [value]="null">Seleccione la profesión</option>
+                    <option *ngFor="let profession of professions" [value]="profession._id"> {{profession.description}}</option>
                   </select>
                 </span>
                 <span class="input-group-btn">
-                  <select class="btn btn-secondary">
-                    <option>Inches</option>
-                    <option>Feet</option>
-                    <option>mm</option>
+                  <select id="sltRadius" class="btn btn-secondary">
+                    <option [value]="0.5">Seleccione la distancia</option>
+                    <option value="1">1 km</option>
+                    <option value="2">2 km</option>
+                    <option value="5">5 km</option>
+                    <option value="10">10 km</option>
+                    <option value="15">15 km</option>
+                    <option value="20">20 km</option>
+                    <option value="30">30 km</option>
+                    <option value="40">40 km</option>
+                    <option value="50">50 km</option>
                   </select>
                 </span>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary">Buscar</button>
+                    <button (click)="search()" class="btn btn-primary">Buscar</button>
                   </span>
               </div>
             </div>
