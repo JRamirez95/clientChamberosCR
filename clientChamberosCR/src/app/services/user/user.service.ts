@@ -10,8 +10,8 @@ import { Login } from '../../models/login';
 })
 
 export class UserService {
-  domain: string = 'http://localhost:3001';
-  //private domain = 'https://chamberos-api.herokuapp.com';
+  //domain: string = 'http://localhost:3001';
+  private domain = 'https://chamberos-api.herokuapp.com';
   
   constructor(private http: HttpClient) {}
 
@@ -27,6 +27,8 @@ export class UserService {
   }*/
 
   editUser(userEdit: User, id: string, token: string) {
+    console.log("dime");
+    console.log(userEdit,id,token);
     return this.http
       .put<User>(`${this.domain}/api/users/${id}`, userEdit, {
         headers: { Authorization: token }
