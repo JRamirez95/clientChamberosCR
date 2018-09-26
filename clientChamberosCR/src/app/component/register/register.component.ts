@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from 'google-maps'
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../models/User';
-import {Profession} from "../../models/Profession";
+
 import { Router } from '@angular/router';
 import {ProfessionService} from '../../services/profession/profession.service';
+import {Profession} from "../../models/Profession";
 
 @Component({
   selector: 'app-register',
@@ -17,8 +18,9 @@ export class RegisterComponent implements OnInit {
   
 
   professions: Profession[];
-  user = new User();
   profession = new Profession();
+  user = new User();
+  
   lat: number;
   lng: number;
 
