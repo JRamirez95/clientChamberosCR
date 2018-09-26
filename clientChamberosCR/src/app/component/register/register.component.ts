@@ -2,113 +2,64 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { } from 'google-maps'
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../models/User';
+
 import { Router } from '@angular/router';
+import {ProfessionService} from '../../services/profession/profession.service';
+import {Profession} from "../../models/Profession";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [UserService]
+  providers: [UserService,ProfessionService ]
 })
 export class RegisterComponent implements OnInit {
 
   
-  @ViewChild('gmap') gmapElement: any;
-  //google maps
-  map: google.maps.Map;
-  isTracking = false;
-  currentLat: any;
-  currentLong: any;
-  marker: google.maps.Marker;
 
-
+  professions: Profession[];
+  profession = new Profession();
   user = new User();
+  
+  lat: number;
+  lng: number;
 
-  constructor (private userServices: UserService, private router:Router){
 
+  constructor (private userServices: UserService,private porfessionServices: ProfessionService, private router:Router){
+    this.getLocation();
+    this.getProfessions();
   }
 
 
   ngOnInit() {
-    var mapProp = {
-      center: new google.maps.LatLng(18.5793, 73.8143),
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
 
-  findMe() {
+  getLocation(){
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.showPosition(position);
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
       });
-    } else {
-      alert("Geolocation is not supported by this browser.");
     }
   }
 
-  showPosition(position) {
-    this.currentLat = position.coords.latitude;
-    this.currentLong = position.coords.longitude;
-
-    let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    this.map.panTo(location);
-
-    if (!this.marker) {
-      this.marker = new google.maps.Marker({
-        position: location,
-        map: this.map,
-        title: 'Got you!'
-      });
-    }
-    else {
-      this.marker.setPosition(location);
-    }
-  }
-
-  trackMe() {
-    if (navigator.geolocation) {
-      this.isTracking = true;
-      navigator.geolocation.watchPosition((position) => {
-        this.showTrackingPosition(position);
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
-
-  showTrackingPosition(position) {
-    console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
-    this.currentLat = position.coords.latitude;
-    this.currentLong = position.coords.longitude;
-
-    let location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    this.map.panTo(location);
-
-    if (!this.marker) {
-      this.marker = new google.maps.Marker({
-        position: location,
-        map: this.map,
-        title: 'Got you!'
-      });
-    }
-    else {
-      this.marker.setPosition(location);
-    }
-  }
-
-
+  getProfessions(){
+    //var ut = localStorage.getItem("userToken");
+        this.porfessionServices.getProfessions()
+        .subscribe(professions => {
+        this.professions = professions;
+        });
+      }
+  
   registerUser(event) {
     event.preventDefault();
-   // if (this.validationPassword(this.user) == false) {
-
-        this.user.latitud = "10.185158";
-        this.user.longitud = "-84.390989";
+        this.user.latitud = String(this.lat);
+        this.user.longitud = String(this.lng);
         this.user.approvalstatus = "true";
-        this.user.professionId = "";
 
         console.log(this.user);
+        if(this.validationGPS(this.user,) == false){
+        
         this.userServices.saveUser(this.user)
             .subscribe(user => {
                 console.log(user);
@@ -117,17 +68,23 @@ export class RegisterComponent implements OnInit {
                 alert("Su registro se realizo exitosamente!");
                 this.router.navigate(['/login'])
             });
-          }// else {
-           // alert("registro fallido, intentolo nuevamente");
-         // }
-   // return;
-}
+            
+          }
+          } 
 
-/* validationPassword = function(user){
-   if (user.password != user.repeatPassword) {
-      alert("Las contrasenas no coinciden");
-         return true;
-                                              }
-          return false;
-                                    }
-}*/
+          validationGPS = function(user, ){
+           
+              console.log(user.latitud,user.longitud)
+           if (!user.latitud || !user.longitud) {
+              alert("Estimado usuario queremos advertirle que no tiene la ubicación activada de su dispositivo o computadora. Por favor activar gps para que su ubicación como chambero la pueden ver los usuarios que requieren de sus servicios. !");
+                 return true;
+                                                      }
+                  return false;
+                }
+ }
+ 
+   
+
+
+
+
