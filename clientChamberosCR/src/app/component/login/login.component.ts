@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.user = res;
      sessionStorage.setItem('user', JSON.stringify(this.user));
     
-     window.location.href= "../home";
+     window.location.href= "../dashboard";
     },
     (err : HttpErrorResponse)=>{
       this.isLoginError = true;
