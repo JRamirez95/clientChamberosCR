@@ -77,17 +77,19 @@ export class SearchChamberosComponent implements OnInit {
     document.getElementById("email").innerHTML = `Email: ${user.email}`;
     document.getElementById("birthdate").innerHTML = `Fecha Nacimiento: ${user.birthdate}`;
     document.getElementById("gender").innerHTML = `Genero: ${user.gender}`;
-    document.getElementById("phone").innerHTML = `Teléfono: ${user.phone}`;
-    
+    document.getElementById("phone").innerHTML = `Teléfono: ${user.phone}`;    
   }
   search(){
-    var radius = (<HTMLInputElement>document.getElementById('sltRadius')).value;
-    var profession = (<HTMLInputElement>document.getElementById('sltProfession')).value;
-    if(radius === undefined || radius === null || profession === undefined || profession === null || profession === 'null'){
+    var radius = (<HTMLSelectElement>document.getElementById('sltRadius'));
+    var profession = (<HTMLSelectElement>document.getElementById('sltProfession'));
+    if(radius.value === undefined || radius.value === null || profession.value === undefined || profession.value === null || profession.value === 'null'){
       alert("Internal Error, verifique el radio, profesion esten corrrectos");
       return;
     }
-    this.radius = Number(`${radius}000`)
-    this.getUsersByPrefession(profession, radius);
+
+    
+    this.radius = Number(`${radius.value}000`);
+    document.getElementById("filtro").innerHTML = `Busqueda: ${profession.options[profession.selectedIndex].text} a un radio de ${radius.options[radius.selectedIndex].text}`;
+    this.getUsersByPrefession(profession.value, radius.value);
   }
 }

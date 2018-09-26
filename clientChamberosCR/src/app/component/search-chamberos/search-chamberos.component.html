@@ -34,7 +34,7 @@
         </div>
         <div class="entry-footer">
           <div *ngIf="lat && lng">
-            <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="10">
               <agm-marker [latitude]="lat" [longitude]="lng">
                 <agm-info-window>
                   <h3><strong>Usuario</strong></h3>
@@ -49,7 +49,7 @@
                   <button class="btn btn-primary" (click)="getUserById(user.user._id)">Ver perfi</button>
                 </agm-info-window>
               </agm-marker>
-              <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius" [fillColor]="'#aeefee'" [circleDraggable]="false"
+              <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius" [fillColor]="'red'" [circleDraggable]="false"
                 [editable]="false">
               </agm-circle>
             </agm-map>
@@ -58,11 +58,13 @@
       </div>
       <div class="col-md-6" id="profile-container">
         <div class="container-fluid">
+          <div class="col-md-12">
+              <h4 id="filtro">Busqueda:</h4>
+          </div>
           <div class="col-md-12 add_to_cart_block">
               <div class="card bg-light mb-3">
                   <div class="card-body">
                       <p class="price">Detalles del Perfil</p>                     
-                      
                       <div class="container-fluid">
                           <div class="row">
                             <div class="col-md-12">
@@ -88,11 +90,6 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <h6 id="birthdate">Fecha Nacimiento</h6>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <h6 id="profession">Profesión</h6>
                               </div>
                             </div>
                           </div>

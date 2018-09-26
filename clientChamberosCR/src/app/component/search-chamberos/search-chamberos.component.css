@@ -7,7 +7,7 @@ agm-map {
     border: 3vw
 }
 
-#main-container {
+#main-container > .row >  .col-md-6 {
     /* top: 10px !important; */
     padding-top: 4em !important;
     /* margin-top: 50em !important; */
@@ -18,8 +18,11 @@ select, button{
     border-left-style: solid 1px black;
 
 }
+#main-container .entry-header > div{
+padding-left: 0;
+}
 #profile-container{
-    margin-top: 2%;
+    /* margin-top: 2%; */
 }
 #profile-container > div{    
     padding-right: 5px;
@@ -41,10 +44,15 @@ span{
 }
 
 .add_to_cart_block .price {
-    margin-top: 2%;
+    margin-top: 0%;
     color: #c01508;
     text-align: center;
     font-weight: bold;
     font-size: 200%;
     margin-bottom: 0;
 }
+#profile-container #filtro{
+padding: 0;
+margin: 20px 0 20px 0;
+}
+
