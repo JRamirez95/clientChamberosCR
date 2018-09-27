@@ -4,6 +4,7 @@ import "rxjs/add/operator/map";
 import { UserToken } from "../../models/UserToken";
 import { User } from "../../models/User";
 import { Login } from "../../models/login";
+import {Mail} from "../../models/Mail";
 
 @Injectable({
   providedIn: "root"
@@ -83,5 +84,12 @@ export class UserService {
   getUserByIdSearch(id: string) {
     const url = `${this.domain}/api/users/search/${id}`;
     return this.http.get<User>(url).map(res => res);
+  }
+
+
+  sendMail(mail:Mail) {
+    return this.http
+      .post<Mail>(`${this.domain}/api/mail`, mail)
+      .map(res => res);
   }
 }
