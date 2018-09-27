@@ -48,6 +48,8 @@
                         <div class="avatar center-block img-thumbnail" style="background-image: url()" alt="..."></div>
                         <div class="title">
                           <h1 class='h5'></h1> 
+                          <!--<input style="background: none; border: none; color: white;" type='text' disabled='' value={{usu.name}} class='form-control'>-->
+                          <input style="background: none; border: none; color: white;" type='text' disabled='' value={{usu.email}} class='form-control'>  
                           <p></p>
                         </div>
                     </div>
@@ -56,8 +58,11 @@
                         <li><a href="/dashboard"><i class="fa fa-globe"></i>Presentación</a></li>                        
                        
                         
-                        <li class="active"><a href="/updateUser"><i class="fa fa-edit"></i>Editar Información</a></li>
-                        
+
+                        <li class="active"><a href="/dashboard"><i class="fa fa-edit"></i>Editar Información</a></li>
+                        <!--<li><a href=""> <i class="fa fa-exchange"></i>Cambiar Contraseña</a></li>
+                        <li><a href=""><i class="fa fa-sign-out"></i>Cerrar Sesion</a></li>-->
+
                     </ul>
                 </nav>
                 <div class="page-content">
@@ -83,18 +88,20 @@
                                                     <div class="col-sm-5">
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <span class="input-group-addon fa fa-user"></span>
+                                                                
                                                                 
                                                                         <input type="text" name= "nombre" [(ngModel)]="user.name"   placeholder="Nombre *"value="{{usu.name}}" class="form-control" required minlength="4"  #name="ngModel" id="name" >
-                                                                        <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-                                                                            <div [hidden]="!name.errors.required">
-                                                                               El nombre es requerido!
-                                                                            </div>
-                                                                            <div [hidden]="!name.errors.minlength">
-                                                                                El nombre requiere 4 letras como minimo!
-                                                                            </div>
-                                                                        
+                                                                    
+                                                            </div>
+                                                            
+                                                            <div id="alert" *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                                                                    <div [hidden]="!name.errors.required">
+                                                                       El nombre es requerido!
                                                                     </div>
+                                                                    <div [hidden]="!name.errors.minlength">
+                                                                        El nombre requiere 4 letras como minimo!
+                                                                    </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,17 +111,18 @@
                                                     <div class="col-sm-5">
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <span class="input-group-addon fa fa-user"></span>
+                                                                
                                                                 <input type="text" class="form-control"   value="{{usu.surnames}}" placeholder="Apellidos *"  [(ngModel)]="user.surnames"  name="surnames" required minlength="4" #surnames="ngModel"/>
-                                            <div *ngIf="surnames.errors && (surnames.dirty || surnames.touched)" class="alert alert-danger">
-                                                    <div [hidden]="!surnames.errors.required">
-                                                       El apellido es requerido!
-                                                    </div>
-                                                    <div [hidden]="!surnames.errors.minlength">
-                                                        El apellido requiere 4 letras como minimo!
-                                                    </div>
-                                                </div>
+                                           
                                                             </div>
+                                                            <div id="alert" *ngIf="surnames.errors && (surnames.dirty || surnames.touched)" class="alert alert-danger">
+                                                                    <div [hidden]="!surnames.errors.required">
+                                                                       El apellido es requerido!
+                                                                    </div>
+                                                                    <div [hidden]="!surnames.errors.minlength">
+                                                                        El apellido requiere 4 letras como minimo!
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -123,8 +131,9 @@
                                                         <div class="col-sm-5">
                                                             <div class="form-group">
                                                                 <div class="input-group">
-                                                                <span class="input-group-addon fa fa-user"></span>
-                                                    <select [(ngModel)]="user.professionId" [ngModelOptions]="{standalone: true}" >
+                                                                
+                                                    <select class="form-control" [(ngModel)]="user.professionId" [ngModelOptions]="{standalone: true}" >
+                                                        <option value="" selected disabled>Seleccione una profesion</option>
                                                       <option *ngFor="let profession of professions" [value]="profession._id" class="form-control">
                                                         {{profession.description}}</option>
                                                     </select>
@@ -137,17 +146,18 @@
                                                     <div class="col-sm-5">
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <span class="input-group-addon fa fa-at"></span>
+                                                                
                                                                 <input type="email" class="form-control" value="{{usu.email}}" placeholder="Correo *"  [(ngModel)]="user.email" name="email"  #email="ngModel"  required email/>
-                                            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
-                                                    <div [hidden]="!email.errors.required">
-                                                       El email es requerido!
-                                                    </div>
-                                                    <div [hidden]="!email.errors?.email">
-                                                        No se dígito un email válido!
-                                                    </div>
-                                                </div>
+                                           
                                                             </div>
+                                                            <div id="alert" *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                                                                    <div [hidden]="!email.errors.required">
+                                                                       El email es requerido!
+                                                                    </div>
+                                                                    <div [hidden]="!email.errors?.email">
+                                                                        No se dígito un email válido!
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -169,17 +179,18 @@
                                                     <div class="col-sm-5">
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <span class="input-group-addon fa fa-phone"></span>
+                                                                
                                                                 <input type="number" class="form-control"  value="{{usu.phone}}"   [(ngModel)]="user.phone" placeholder="Telefono/Celular *" name="phone" #phone="ngModel"  required minlength="8" required/>
-                                                <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
-                                                        <div [hidden]="!phone.errors.required">
-                                                           El telefono es requerido!
-                                                        </div>
-                                                        <div [hidden]="!phone.errors.minlength">
-                                                                El telefono requiere 8 digitos como minimo!
-                                                        </div>
-                                                    </div>
+                                                
                                                             </div>
+                                                            <div id="alert" *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
+                                                                    <div [hidden]="!phone.errors.required">
+                                                                       El telefono es requerido!
+                                                                    </div>
+                                                                    <div [hidden]="!phone.errors.minlength">
+                                                                            El telefono requiere 8 digitos como minimo!
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
