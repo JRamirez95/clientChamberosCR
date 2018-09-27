@@ -37,12 +37,12 @@
             <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="10">
               <agm-marker [latitude]="lat" [longitude]="lng">
                 <agm-info-window>
-                  <h3><strong>Usuario</strong></h3>
-                  <p>Esoy aquiii!</p>
+                  <h3><strong>Mi ubicación!!</strong></h3>
+                  <p>Puedes ver que chamber@ este más cerca de ti.</p>
                 </agm-info-window>
               </agm-marker>
               <agm-marker *ngFor="let user of users; let i = index" [latitude]="user.user.latitud" [longitude]="user.user.longitud"
-                #idid [iconUrl]="'../../../assets/imhere.png'" id="marker1">
+                #idid [iconUrl]="'../../../assets/hombre.gif'" id="marker1">
                 <agm-info-window>
                   <h3><strong>{{user.user.name}} {{user.user.surnames}}</strong></h3>
                   <p>Hey puedes contactarme, estoy a tan solo {{user.km}} km, de donde tu estas</p>
@@ -65,7 +65,7 @@
               <div class="card bg-light mb-3">
                   <div class="card-body">
                       <p class="price">Detalles del Perfil</p>                     
-                      <div class="container-fluid">
+                      <div class="container-fluid card-details">
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group">
@@ -87,33 +87,46 @@
                                 <h6 id="gender">Genero</h6>
                               </div>
                             </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <h6 id="birthdate">Fecha Nacimiento</h6>
-                              </div>
-                            </div>
                           </div>
-                        </div>
-                          
-                      
-                    
-                      <div class="reviews_product p-3 mb-2 ">
-                          3 reviews
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          (4/5)
-                          <a class="pull-right" href="#reviews">View all reviews</a>
-                      </div>
-                      
-                      <button class="btn btn-success btn-block">Contactarme</button>
+                        </div>                      
+                      <button id="btn-contact" (click)="clearModal()" disabled data-toggle="modal" data-target="#contact"class="btn btn-success btn-block">Contactarme</button>
                   </div>
               </div>
           </div>
       </div>  
- 
+      <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="contact">Contactar</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <p for="msj">Se enviara este mensaje al chamber@, indicando que te quieres contactar con el. Para esto debes de ingresar tu información personal, no nosotros nos pondremos en conacto por ti.</p>
+              </div>
+              <div class="form-group">
+                <label for="txtFullname">Nombre compleato</label>
+                <input type="text" id="txtFullname" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="txtEmail">Email</label>
+                <input type="text" id="txtEmail" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="txtPhone">Teléfono</label>
+                <input type="text" id="txtPhone" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="openModal()" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>

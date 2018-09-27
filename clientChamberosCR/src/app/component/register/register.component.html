@@ -122,22 +122,6 @@
                                                             </div>
                                                         </div>
                                                 </div>
-                                                <div class="form-group">
-                                                        <input type="password" class="form-control" placeholder="Contraseña de verificacion *"   [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password"/>
-                                                        <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
-                                                                <div [hidden]="!certainPassword.errors.required">
-                                                                   La contraseña de verificacion es requerida!
-                                                                </div>
-                                                                <div [hidden]="!certainPassword.errors.minlength">
-                                                                    La contraseña de verificacion requiere 8 digitos como minimo!
-                                                                </div>
-                                                                
-                                                                <div [hidden]="!certainPassword.errors?.equalTo ">
-                                                                        La contraseñas no coinciden!
-                                                                    </div>
-                                                            </div>
-                                                    </div>
-
                                         <!--<input type="submit" class="btnRegister"  value="Registrarse"  />-->
                                         <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Formalizar Registro</button>
                                     </div>
