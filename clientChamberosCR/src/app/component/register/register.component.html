@@ -1,158 +1,151 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <!------ Include the above in your HEAD tag ---------->
-<!--holis-->
 
 <div class="container register">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                        <img src="https://ubisafe.org/images/transparent-tool-logo-6.png" alt=""/>
-                        <h3>Bienvenido</h3>
-                        <p>Registarse en ChamberosCR</p>
-                        
-                    </div>
-                    <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link" id="home-tab" data-toggle="tab" href="/login" role="tab" aria-controls="home" aria-selected="true">Iniciar Sesion</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="/register" role="tab" aria-controls="profile" aria-selected="false">Registrarse</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    
-                                <h3 class="register-heading">Registrarse</h3>
-                                <form id="register" #registerForm="ngForm"  name="vform" (submit) = "registerUser($event)">
-                                <div class="row register-form">
-                                    <div class="col-md-6" >   
-                                        <div class="form-group">
-                                            <input type="text" name= "name" [(ngModel)]="user.name"  placeholder="Nombre *" class="form-control" required minlength="4"  #name="ngModel" id="name" >
-                                            <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-                                                <div [hidden]="!name.errors.required">
-                                                   El nombre es requerido!
-                                                </div>
-                                                <div [hidden]="!name.errors.minlength">
-                                                    El nombre requiere 4 letras como minimo!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="Apellidos *"  [(ngModel)]="user.surnames"  name="surnames" required minlength="4" #surnames="ngModel"/>
-                                            <div *ngIf="surnames.errors && (surnames.dirty || surnames.touched)" class="alert alert-danger">
-                                                    <div [hidden]="!surnames.errors.required">
-                                                       El apellido es requerido!
-                                                    </div>
-                                                    <div [hidden]="!surnames.errors.minlength">
-                                                        El apellido requiere 4 letras como minimo!
-                                                    </div>
-                                                </div>
-                                        </div>
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://ubisafe.org/images/transparent-tool-logo-6.png" alt="" />
+            <h3>Bienvenido</h3>
+            <p>Registarse en TicoChamberos</p>
 
-                                        <div class="form-group">
-                                                <label>Profesión</label>
-                                                <br>
-                                            <select [(ngModel)]="user.professionId" [ngModelOptions]="{standalone: true}">
-                                              <option *ngFor="let profession of professions" [value]="profession._id">
-                                                {{profession.description}}</option>
-                                            </select>
-                                            </div>
-                                        
-                                       
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="hombre"  checked="checked" [(ngModel)]="user.gender" name="gender"  #gender="ngModel">
-                                                    <span> Hombre </span> 
-                                                    
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="mujer" name="gender" [(ngModel)]="user.gender"  name="gender"  #gender="ngModel">
-                                                    <span> Mujer </span> 
-                                                </label>
-                                            </div>
+        </div>
+        <div class="col-md-9 register-right reg">
+
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <h3 class="register-heading">Registrarse</h3>
+                    <form id="register" #registerForm="ngForm" name="vform" (submit)="registerUser($event)">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" [(ngModel)]="user.name" placeholder="Nombre *" class="form-control" required minlength="4" #name="ngModel" id="name">
+                                    <div id="alert" *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                                        <div [hidden]="!name.errors.required">
+                                            El nombre es requerido!
                                         </div>
-                                        <div class="form-group">
-                                                <label>Fecha de nacimiento</label>
-                                                <input class="form-control" required id="birthdate" name= "birthdate" [(ngModel)]="user.birthdate" type="date" #fecha="ngModel">
-                                                <div *ngIf ="fecha.errors && (fecha.dirty || fecha.touched)" class="alert alert-danger">
-                                                   <div [hidden]="!fecha.errors.required">
-                                                        La fecha de nacimiento es requrida!
-                                                   </div>
-                                                </div>
+                                        <div [hidden]="!name.errors.minlength">
+                                            El nombre requiere 4 letras como minimo!
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email *"  [(ngModel)]="user.email" name="email"  #email="ngModel"  required email/>
-                                            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
-                                                    <div [hidden]="!email.errors.required">
-                                                       El email es requerido!
-                                                    </div>
-                                                    <div [hidden]="!email.errors?.email">
-                                                        No se dígito un email válido!
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        
-                                        <!--falta validar su longitud de digitos numericos-->
-                                        <div class="form-group">
-                                                <input type="number" class="form-control" placeholder="Telefono/Celular *"   [(ngModel)]="user.phone" name="phone" #phone="ngModel"  required minlength="8" required/>
-                                                <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
-                                                        <div [hidden]="!phone.errors.required">
-                                                           El telefono es requerido!
-                                                        </div>
-                                                        <div [hidden]="!phone.errors.minlength">
-                                                                El telefono requiere 8 digitos como minimo!
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                      
-                                            <div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Contraseña *"   [(ngModel)]="user.password" name="password" required minlength="8" #password="ngModel"/>
-                                                    <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
-                                                            <div [hidden]="!password.errors.required">
-                                                               La contraseña es requerida!
-                                                            </div>
-                                                            <div [hidden]="!password.errors.minlength">
-                                                                La contraseña requiere 8 digitos como minimo!
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                                <div class="form-group">
-                                                        <input type="password" class="form-control" placeholder="Contraseña de verificacion *"   [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password"/>
-                                                        <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
-                                                                <div [hidden]="!certainPassword.errors.required">
-                                                                   La contraseña de verificacion es requerida!
-                                                                </div>
-                                                                <div [hidden]="!certainPassword.errors.minlength">
-                                                                    La contraseña de verificacion requiere 8 digitos como minimo!
-                                                                </div>
-                                                                
-                                                                <div [hidden]="!certainPassword.errors?.equalTo ">
-                                                                        La contraseñas no coinciden!
-                                                                    </div>
-                                                            </div>
-                                                    </div>
-
-                                        <!--<input type="submit" class="btnRegister"  value="Registrarse"  />-->
-                                        <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Formalizar Registro</button>
-                                    </div>
-                                
                                 </div>
-                            </form>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Apellidos *" [(ngModel)]="user.surnames" name="surnames" required minlength="4" #surnames="ngModel" />
+                                    <div *ngIf="surnames.errors && (surnames.dirty || surnames.touched)" class="alert alert-danger">
+                                        <div [hidden]="!surnames.errors.required">
+                                            El apellido es requerido!
+                                        </div>
+                                        <div [hidden]="!surnames.errors.minlength">
+                                            El apellido requiere 4 letras como minimo!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <select class="form-control" [(ngModel)]="user.professionId" [ngModelOptions]="{standalone: true}">
+                                        <option disabled selected> Seleccionar Profesion</option>
+                                        <option *ngFor="let profession of professions" [value]="profession._id">
+                                            {{profession.description}}</option>
+                                    </select>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" value="hombre" checked="checked" [(ngModel)]="user.gender" name="gender" #gender="ngModel">
+                                            <span> Hombre </span>
+
+                                        </label>
+                                        <br>
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" value="mujer" name="gender" [(ngModel)]="user.gender" name="gender" #gender="ngModel">
+                                            <span> Mujer </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                             
+
                             </div>
-              
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email *" [(ngModel)]="user.email" name="email" #email="ngModel" required email/>
+                                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                                        <div [hidden]="!email.errors.required">
+                                            El email es requerido!
+                                        </div>
+                                        <div [hidden]="!email.errors?.email">
+                                            No se dígito un email válido!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--falta validar su longitud de digitos numericos-->
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Telefono/Celular *" [(ngModel)]="user.phone" name="phone" #phone="ngModel" required minlength="8" required/>
+                                    <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
+                                        <div [hidden]="!phone.errors.required">
+                                            El telefono es requerido!
+                                        </div>
+                                        <div [hidden]="!phone.errors.minlength">
+                                            El telefono requiere 8 digitos como minimo!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña *" [(ngModel)]="user.password" name="password" required minlength="8" #password="ngModel" />
+                                    <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+                                        <div [hidden]="!password.errors.required">
+                                            La contraseña es requerida!
+                                        </div>
+                                        <div [hidden]="!password.errors.minlength">
+                                            La contraseña requiere 8 digitos como minimo!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña de verificacion *" [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password" />
+                                    <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
+                                        <div [hidden]="!certainPassword.errors.required">
+                                            La contraseña de verificacion es requerida!
+                                        </div>
+                                        <div [hidden]="!certainPassword.errors.minlength">
+                                            La contraseña de verificacion requiere 8 digitos como minimo!
+                                        </div>
+
+                                        <div [hidden]="!certainPassword.errors?.equalTo ">
+                                            La contraseñas no coinciden!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label>Fecha de nacimiento</label>
+                                        <input class="form-control" required id="birthdate" name="birthdate" [(ngModel)]="user.birthdate" type="date" #fecha="ngModel">
+                                        <div *ngIf="fecha.errors && (fecha.dirty || fecha.touched)" class="alert alert-danger">
+                                            <div [hidden]="!fecha.errors.required">
+                                                La fecha de nacimiento es requrida!
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <!--<input type="submit" class="btnRegister"  value="Registrarse"  />-->
+                                
+                            </div>
+                            <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Formalizar Registro</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                
 
             </div>
-           
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            
+        </div>
+    </div>
+
+</div>
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
