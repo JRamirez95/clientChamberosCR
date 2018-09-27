@@ -21,16 +21,30 @@
 
                 </li>
 
+
             </div>
 
             <ng-template #loggedOut>
+
+                    <div>
+                            <li class="nav-item" [routerLinkActive]="['active']">
+        
+                                <a id="menuChambero"  [routerLink]="['/dashboard']" class="nav-link" ><i class="fas fa-home"></i>Menú Chambero</a>
+                            </li>
+                        </div>
+
                 <div>
                     <li class="nav-item" [routerLinkActive]="['active']">
 
                         <a id="cerrarSesion" class="nav-link" (click)='logout();'><i class="fas fa-key"></i> Cerrar Sesion</a>
                     </li>
                 </div>
+                
             </ng-template>
+
+           
+                
+            
 
         </ul>
     </div>
