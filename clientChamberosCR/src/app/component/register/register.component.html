@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <input type="password" class="form-control" placeholder="Contraseña de verificacion *" [(ngModel)]="user.certainPassword" name="certainPassword" required minlength="8" #certainPassword="ngModel" [equalTo]="password" />
                                     <div *ngIf="certainPassword.errors && (certainPassword.dirty || certainPassword.touched)" class="alert alert-danger">
                                         <div [hidden]="!certainPassword.errors.required">
@@ -122,7 +122,7 @@
                                             La contraseñas no coinciden!
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="form-group">
                                         <label>Fecha de nacimiento</label>
                                         <input class="form-control" required id="birthdate" name="birthdate" [(ngModel)]="user.birthdate" type="date" #fecha="ngModel">
